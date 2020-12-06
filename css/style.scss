@@ -1,0 +1,211 @@
+$colors : (
+    Very-Dark-Grayish-Blue: hsl(217, 19%, 35%),
+    Desaturated-Dark-Blue: hsl(214, 17%, 51%),
+    Grayish-Blue: hsl(212, 23%, 69%),
+    Light-Grayish-Blue: hsl(210, 46%, 95%)
+);
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Manrope;
+}
+
+.wrapper {
+    background-color: map-get($colors, Light-Grayish-Blue);
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+
+    & .container {
+        display: grid;
+        grid-template-columns: 1fr 1.5fr;
+        width: 50%;
+        font-size: 13px;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 10px 15px rgba($color: #000, $alpha: .1);
+
+        @media screen and (max-width : 650px) {
+            width: 90%;
+            grid-template-columns: 1fr;
+            grid-template-rows: 1fr 1.5fr;
+        }
+
+        & .image__left {
+            background: url('../images/drawers.jpg') no-repeat;
+            background-size: cover;
+        }
+
+        & .article {
+            padding: 25px;
+            background-color: #FFF;
+            display: grid;
+            grid-row-gap: 15px;
+            color: map-get($map: $colors, $key: Very-Dark-Grayish-Blue);
+            @media screen and (max-width : 650px){
+                padding-bottom: 15px;
+                grid-row-gap: 20px;
+                position: relative;
+            }
+
+            & .article__title {
+                font-size: 20px;
+                font-weight: 700;
+
+                @media screen and (max-width : 650px){
+                    font-size: 15px;
+                }
+            }
+
+            & .article__text {
+                font-size: 12px;
+                color: map-get($map: $colors, $key: Grayish-Blue);
+
+                @media screen and (max-width : 650px){
+                    font-size: 13px;
+                }
+            }
+
+            & .article__user {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                @media screen and (max-width : 650px){
+                    margin-top: 10px;
+                }
+
+                & .user {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-around;
+                    @media screen and (max-width : 650px){
+                        font-size: 12px;
+                    }
+                    & .user__image {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        margin-right: 10px;
+    
+                        & img {
+                            border-radius: 50%;
+                            width: 35px;
+                            height: 35px;
+                        }
+                    }
+    
+                    & .user__infos {
+                        // border: 1px solid red;
+    
+                        & .user__name {
+                            // border: 1px solid red;
+                            font-weight: 700;
+                        }
+    
+                        & .user__date {
+                            // border: 1px solid red;
+                            color: map-get($map: $colors, $key: Grayish-Blue);
+                        }
+                    }
+                }
+
+                & .user__share_btn {
+                    border-radius: 50%;
+                    height: 30px;
+                    width: 30px;
+                    cursor: pointer;
+                    outline: none;
+                    border: none;
+                    background-color: map-get($colors, Light-Grayish-Blue);
+
+                    &:hover .share__options {
+                        visibility: visible;
+                        opacity: 1;
+                    }
+                }
+
+                & .share__options {
+                    background-color: map-get($map: $colors, $key: Very-Dark-Grayish-Blue);
+                    position: absolute;
+                    bottom: 42%;
+                    right: 280px;
+                    color: map-get($colors, Light-Grayish-Blue);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    padding: 0 10px 0 20px;
+                    border-radius: 5px;
+                    opacity: 0;
+                    visibility: hidden;
+                    transition: visibility .4s ease-in, opacity .2s ease;
+                    @media screen and (max-width : 650px){
+                        bottom: 0;
+                        right: 0;
+                        left: 0;
+                        border-radius: 0;
+                        justify-content: space-evenly;
+                        padding: 5px;
+                    }
+
+                    &::after {
+                        content: '';
+                        position: absolute;
+                        border-color: map-get($map: $colors, $key: Very-Dark-Grayish-Blue) transparent transparent;
+                        border-width: 10px;
+                        border-style: solid;
+                        bottom: -20px;
+                        left: 50%;
+                        transform: translateX(-50%);
+                    }
+
+                    & .text {
+                        text-transform: uppercase;
+                        letter-spacing: 3px;
+                        font-size: 10px;
+                        opacity: .7;
+
+                        @media screen and (max-width : 650px){
+                            font-size: 12px;
+                        }
+                    }
+
+                    & .icons {
+                        display: grid;
+                        padding: 10px;
+                        grid-template-columns: 1fr 1fr 1fr;
+                        grid-column-gap: 10px;
+                        align-items: center;
+
+                        @media screen and (max-width : 650px){
+                            grid-column-gap: 20px;
+                            align-self: flex-start;
+                         }
+
+                        & img {
+                            width: 15px;    
+                        }
+                    }
+
+                    & .share {
+                       width: 30px;
+                       height: 30px;
+                       border-radius: 50%;
+                       display: flex;
+                       align-items: center;
+                       justify-content: center;
+                       background-color: map-get($map: $colors, $key: Desaturated-Dark-Blue);
+
+                       & path {
+                           fill: #FFF;
+                       }
+                    }
+                }
+            }
+        }
+    }
+}
